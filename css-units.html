@@ -12,7 +12,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/solarized.css" id="theme">
@@ -22,10 +22,194 @@
 
     <!-- custom styles -->
     <style>
+      .reveal {
+        font-size: 32px;
+      }
+
+      .reveal h1,
+      .reveal h2,
+      .reveal h3,
+      .reveal h4,
+      .reveal h5,
+      .reveal h6 {
+        font-family: sans-serif;
+        text-transform: none;
+      }
+
       .reveal section img {
         border: none;
         box-shadow: none;
       }
+
+      .demo .preview {
+        margin: 4rem 0;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .demo .source pre {
+        width: 100%;
+      }
+
+      .demo.transform-rotate .box {
+        width: 120px;
+        height: 120px;
+        line-height: 120px;
+        font-size: 2em;
+        text-align: center;
+        background-color: #a50;
+        color: #fff;
+      }
+
+      .demo.transform-rotate .box-1 {
+        transform: rotate(0deg);
+      }
+
+      .demo.transform-rotate .box-2 {
+        transform: rotate(90deg);
+      }
+
+      .demo.transform-rotate .box-3 {
+        transform: rotate(180deg);
+      }
+
+      .demo.transform-rotate .box-4 {
+        transform: rotate(270deg);
+      }
+
+      .demo.linear-gradient .box {
+        width: 120px;
+        height: 120px;
+        line-height: 120px;
+        text-align: center;
+        color: #fff;
+        border-radius: 60px;
+      }
+
+      .demo.linear-gradient .box-1 {
+        background: linear-gradient(0deg, orange, seagreen);
+      }
+
+      .demo.linear-gradient .box-2 {
+        background: linear-gradient(45deg, orange, seagreen);
+      }
+
+      .demo.linear-gradient .box-3 {
+        background: linear-gradient(90deg, orange, seagreen);
+      }
+
+      .demo.linear-gradient .box-4 {
+        background: linear-gradient(180deg, orange, seagreen);
+      }
+
+      .demo.transition .box {
+        display: block;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        user-select: none;
+        background: brown;
+        color: #fff;
+        transform: translateZ(0);
+        transition: transform .25s ease-in;
+      }
+
+      .demo.transition .box:focus {
+        transform: translate(500px, 0);
+        transition: transform 1s ease-in;
+      }
+
+      .taiji {
+        box-sizing: border-box;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        width: 1em;
+        height: 1em;
+        font-size: 100%;
+        line-height: 1;
+        border-radius: .5em;
+        overflow: hidden;
+      }
+
+      .taiji *,
+      .taiji *:before,
+      .taiji *:after {
+        box-sizing: inherit;
+      }
+
+      .taiji .yin,
+      .taiji .yang {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+      }
+
+      .taiji .yin {
+        right: 0;
+        background: #000;
+      }
+
+      .taiji .yang {
+        left: 0;
+        background: #fff;
+      }
+
+      .taiji .yin:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: -.25em;
+        width: .5em;
+        height: .5em;
+        font-size: 100%;
+        line-height: 1;
+        background: #fff;
+        border: .18em solid #000;
+        border-radius: .25em;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .taiji .yang:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: .25em;
+        width: .5em;
+        height: .5em;
+        font-size: 100%;
+        line-height: 1;
+        background: #000;
+        border: .18em solid #fff;
+        border-radius: .25em;
+        overflow: hidden;
+      }
+
+
+      @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(90deg); }
+        50% { transform: rotate(180deg); }
+        75% { transform: rotate(270deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .demo.animation .box {
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+        font-size: 100px;
+        line-height: 1;
+        color: #fff;
+        animation: 2s linear infinite both paused rotate;
+      }
+
+      .demo.animation .box:hover {
+        animation-play-state: running;
+      }
+
     </style>
 
 		<!-- Printing and PDF exports -->
@@ -57,11 +241,11 @@
 
 				<section>
 					<h2>一条 CSS 规则语法</h2>
-          <p><img src="images/css-units/css-rule-syntax.png" width="290" height="208" alt="CSS rule syntax"></p>
+          <p><img src="images/css-units/css-rule-syntax.png" width="347" height="208" alt="CSS rule syntax"></p>
 				</section>
 
 				<section>
-          <p><strong>Component value：</strong>其中构成之一是带有单位的数值，称之为维度（dimensions），比如前面的<code>24px</code>。</p>
+          <p><strong>属性值</strong>：由一个或多个 <a href="https://www.w3.org/TR/css3-values/#value-defs">component value</a> 组成，component value 有多种类型，比如关键词（<code>auto</code>、<code>disc</code>）、基本数据类型（比如数值类型（<code>24px</code>）等。</p>
 				</section>
 
 				<section>
@@ -78,74 +262,305 @@
         <section>
           <h2>长度单位</h2>
           <ul>
-            <li>绝对长度（Absolute lengths）：比如<code>px</code></li>
+            <li>绝对长度（Absolute lengths）：比如 <code>px</code>。</li>
             <li>
-              <p>相对长度（Rela<p>
+              <p>相对长度（Relative lengths）<p>
               <ul>
-                <li>字体相对长度（font-relative lengths）：比如<code>em</code>、<code>rem</code></li>
-                <li>视口百分比长度（viewport-percentage lengths）：比如<code>vw</code>、<code>vh</code></li>
+                <li>字体相对长度（font-relative lengths）：比如 <code>em</code>、<code>rem</code>。</li>
+                <li>视口百分比长度（viewport-percentage lengths）：比如 <code>vw</code>、<code>vh</code>。</li>
               </ul>
             </li>
           </ul>
         </section>
 
         <section>
-          <h2>绝对长度</h2>
+          <section>
+            <h2>绝对长度</h2>
+            <p><strong>绝对长度单位（absolute length units）</strong>之间的转换关系固定，以某些物理度量值为基准。由<strong>物理单位（physical units）</strong>和<strong>可视角度单位（visual angle unit）</strong>组成。</p>
+          </section>
+          <section>
+            <ul>
+              <li>物理单位包括：<code>in</code>、<code>cm</code>、<code>mm</code>、<code>pt</code>、<code>pc</code>、<code>q</code>。</li>
+              <li>可视角度单位包括：<code>px</code>。</li>
+            </ul>
+          </section>
+          <section>
+            <h2>各单位之间转换关系</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 3em">单位</th>
+                  <th>名称</th>
+                  <th>转换</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>cm</td>
+                  <td>厘米（centimeters）</td>
+                  <td>1cm = 96px/2.54</td>
+                </tr>
+                <tr>
+                  <td>mm</td>
+                  <td>毫米（millimeters）</td>
+                  <td>1mm = 1cm/10</td>
+                </tr>
+                <tr>
+                  <td>q</td>
+                  <td>四分之一毫米（quarter-millimeters）</td>
+                  <td>1q = 1mm/4</td>
+                </tr>
+                <tr>
+                  <td>in</td>
+                  <td>英寸（inches）</td>
+                  <td>1in = 2.54cm = 96px</td>
+                </tr>
+                <tr>
+                  <td>pc</td>
+                  <td>皮卡（picas）</td>
+                  <td>1pc = 1in/6</td>
+                </tr>
+                <tr>
+                  <td>pt</td>
+                  <td>点/磅（points）</td>
+                  <td>1pt = 1in/72</td>
+                </tr>
+                <tr>
+                  <td>px</td>
+                  <td>像素（pixels）</td>
+                  <td>1px = 1in/96</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h2>Reference pixel</h2>
+            <p>从手臂长度（28英寸）距离观测，96dpi 的一个像素的可视角度，约为 0.0213°。</p>
+            <p><img src="images/css-units/pixel1.png" alt="Visual angle pixel" /></p>
+          </section>
+          <section>
+            iPhone7、Mi6、Dell 23.8 显示器物理尺寸、物理分辨率、CSS 分辨率对比表格
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>长度相对字体单位</h2>
+            <ul>
+              <li><code>em</code>：等于元素 <code>font-size</code> 属性计算值。</li>
+              <li><code>ex</code>：第一个应用当前 <code>font-family</code> 属性计算值当中字体的字符的<a href="https://www.w3.org/TR/css3-values/#ex">x高度（x-height）</a>。</li>
+              <li><code>ch</code>：字符 <code>0</code> 的 <a href="://www.w3.org/TR/css3-values/#length-advance-measure">advance measure。</a></li>
+              <li><code>rem</code>：根元素 <code>font-size</code> 属性计算值，如果应用于根元素的 <code>font-size</code>，则为 <code>font-size</code> 的初始值（initial value）。</li>
+          </section>
+          <section>
+            <h2><code>rem</code>应用示例</h2>
+            <ul>
+              <li>导航栏</li>
+              <li>图文列表</li>
+              <li>按钮</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>长度相对视口单位</h2>
+            <ul>
+              <li><code>vw</code>：视口宽度的 1%</li>
+              <li><code>vh</code>：视口高度的 1%</li>
+              <li><code>vmin</code>：<code>vw</code> 和 <code>vh</code> 当中较小的。</li>
+              <li><code>vmax</code>：<code>vw</code> 和 <code>vh</code> 当中较大的。</li>
+            </ul>
+          </section>
+          <section>
+            <h2>示例</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>角度单位</h2>
+            <ul>
+              <li><code>deg</code>：度（degrees），一圈有 360 度。</li>
+              <li><code>grad</code>：百分度（gradians/gons/grades），一圈有 400 百分度。</li>
+              <li><code>rad</code>：弧度（radians），一圈有 <code>2π</code>弧度。</li>
+              <li><code>turn</code>：圈（turns），顾名思义。</li>
+            </ul>
+          </section>
+          <section>
+            <p>通常，在 CSS 中，如果角度表示方向时，作为<strong>方位角（bearing angle)</strong>。即，<code>0deg</code> 表示“上”或“北”，按照<strong>顺时针</strong>方向，<code>90deg</code> 表示“右”或“东。</p>
+          </section>
+          <section>
+            <h2>示例1：<code>transform</code></h2>
+            <div class="demo transform-rotate">
+              <div class="preview">
+                <div class="box box-1">
+                  &Rightarrow;
+                </div>
+                <div class="box box-2">
+                  &Rightarrow;
+                </div>
+                <div class="box box-3">
+                  &Rightarrow;
+                </div>
+                <div class="box box-4">
+                  &Rightarrow;
+                </div>
+              </div>
+              <div class="source">
+                <pre><code class="hljs" contentEditable>
+.box-1 {
+  transform: rotate(0deg);
+}
+
+.box-2 {
+  transform: rotate(90deg);
+}
+
+.box-3 {
+  transform: rotate(180deg);
+}
+
+.box-4 {
+  transform: rotate(270deg);
+}
+</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>示例2：<code>linear-gradient</code></h2>
+            <div class="demo linear-gradient">
+              <div class="preview">
+                <div class="box box-1">
+                  0deg
+                </div>
+                <div class="box box-2">
+                  45deg
+                </div>
+                <div class="box box-3">
+                  90deg
+                </div>
+                <div class="box box-4">
+                  180deg
+                </div>
+              </div>
+              <div class="source">
+                <pre><code class="hljs" contentEditable>
+.box-1 {
+  background: linear-gradient(0deg, orange, seagreen);
+}
+
+.box-2 {
+  background: linear-gradient(45deg, orange, seagreen);
+}
+
+.box-3 {
+  background: linear-gradient(90deg, orange, seagreen);
+}
+
+.box-4 {
+  background: linear-gradient(180deg, orange, seagreen);
+}</code></pre>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>时间单位</h2>
+            <ul>
+              <li><code>s</code>：秒（seconds）。</li>
+              <li><code>ms</code>：毫秒（milliseconds），等于千分之一秒。</li>
+            </ul>
+          </section>
+          <section>
+            <h2>示例1：<code>transition</code></h2>
+            <div class="demo transition">
+              <div class="preview">
+                <a class="box" href="javascript:;">Click me</a>
+              </div>
+              <div class="source">
+                <pre><code class="hljs" contentEditable>
+.box {
+  display: block;
+  width: 100px;
+  height: 100px;
+  transform: translateZ(0);
+  transition: transform .25s ease-in;
+}
+
+.box:focus {
+  transform: translate(500px, 0);
+  transition: transform 1s ease-in;
+}
+</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>示例2：<code>animation</code></h2>
+            <div class="demo animation">
+              <div class="preview">
+                <div class="box">
+                  <div class="taiji">
+                    <div class="yin"></div>
+                    <div class="yang"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="source">
+                <pre><code class="hljs" contentEditable>
+.box {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  font-size: 100px;
+  line-height: 1;
+  color: #fff;
+  animation: 2s linear infinite both paused rotate;
+}
+
+.box:hover {
+  animation-play-state: running;
+}
+</code></pre>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <h2>频率单位</h2>
+          <ul>
+            <li><code>Hz</code>：赫兹（Hertz），表示每秒发生的次数。</li>
+            <li><code>kHz</code>：千赫兹（kiloHertz），等于 1000 Hz。</li>
+          </ul>
+          <p>目前没有浏览器实现</p>
+        </section>
+
+        <section>
+          <section>
+            <h2>分辨率单位</h2>
+            <ul>
+              <li><code>dpi</code>：每英寸点数</li>
+              <li><code>dpcm</code>：每厘米点数</li>
+              <li><code>dppx</code>：每像素点数</li>
+            </ul>
+          </section>
+          <section>
+            <h2>示例：应用于 media query 中</h2>
+            <pre><code class="hljs" contentEditable>
+@media (min-resolution: 2dppx) {
+  /* 高像素密度设备，比如 retina 屏幕 */
+}
+</code></pre>
+          </section>
         </section>
 
 				<section>
-					<h2>Pretty Code</h2>
-					<pre><code class="hljs" data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							</tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							</tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
-
-				<section style="text-align: left;">
-					<h1>谢谢大家！</h1>
+					<h1>The End</h1>
 				</section>
 
 			</div>
