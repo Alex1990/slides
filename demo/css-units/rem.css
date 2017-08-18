@@ -1,0 +1,132 @@
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  font-family: sans-serif;
+}
+
+html *,
+html *:before,
+html *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  color: #333;
+}
+
+/* toolbar
+ * =======
+ */
+
+.toolbar {
+  position: relative;
+  height: 4.8rem;
+  background: #333;
+  box-shadow: 0 0 8px #333;
+}
+
+.toolbar .page-title {
+  margin: 0;
+  padding: 1.5rem 0;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #fff;
+}
+
+.toolbar-action {
+  position: absolute;
+  top: 0.8rem;
+  margin: 0;
+  padding: 0;
+  width: 3.2rem;
+  height: 3.2rem;
+  font-size: 1.6rem;
+  line-height: 3.2rem;
+  text-align: center;
+  background: transparent;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 1.6rem;
+  outline: none;
+}
+
+.toolbar-action:active {
+  background: #222;
+  border-color: #555;
+}
+
+.toolbar-action-start {
+  left: 0.8rem;
+}
+
+.toolbar-action-end {
+  right: 0.8rem;
+}
+
+/* list
+ * ====
+ */
+
+.list {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.6rem 0;
+  list-style: none;
+}
+
+.list-item > a {
+  display: flex;
+  padding: 0 1.6rem 1.6rem;
+}
+
+.list-item-thumbnail {
+  flex-basis: 0;
+  flex-grow: 2;
+  font-size: 0;
+}
+
+.list-item-thumbnail img {
+  display: inline-block;
+  max-width: 100%;
+  width: 13.7rem;
+  height: 8rem;
+  background: #ddd;
+}
+
+.list-item-detail {
+  flex-basis: 0;
+  flex-grow: 3;
+  font-size: 1.4rem;
+  padding-left: 1rem;
+}
+
+.list-item-title {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.list-item-description {
+  font-size: 1.4rem;
+  color: #555;
+}
+
+@media only screen and (min-width: 320px) {
+  html {
+    font-size: 8.5px !important;
+  }
+}
+
+@media only screen and (min-width: 360px) {
+  html {
+    font-size: 10px !important;
+  }
+}
+
+@media only screen and (min-width: 412px) {
+  html {
+    font-size: 11px !important;
+  }
+}

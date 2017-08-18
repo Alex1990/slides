@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dialog</title>
+  <style>
+    html {
+      font-size: 10px;
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .dialog {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dialog-content {
+      width: 80vw;
+      background: #fff;
+      box-shadow: 0 0.2rem 1.2rem #ccc;
+    }
+
+    .dialog-header {
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .dialog-title {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .dialog-body {
+      max-height: 40vh;
+      padding: 1rem;
+      font-size: 1.4rem;
+      overflow: auto;
+    }
+
+    .dialog-footer {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+
+    .dialog-footer .btn {
+      margin: 0;
+      padding: 1.2rem 0;
+      width: 100%;
+      font-size: 16px;
+      line-height: 1;
+      text-align: center;
+      background: transparent;
+      border: none;
+    }
+    .dialog-footer .btn:nth-child(2) {
+      border-left: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="dialog">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <h3 class="dialog-title">删除收藏</h3>
+      </div>
+      <div class="dialog-body">
+        <p>确定要删除以下收藏吗？</p>
+        <ul>
+          <li>商品 1</li>
+          <li>商品 2</li>
+          <li>商品 3</li>
+          <li>商品 4</li>
+          <li>商品 5</li>
+          <li>商品 6</li>
+          <li>商品 7</li>
+          <li>商品 8</li>
+          <li>商品 9</li>
+          <li>商品 10</li>
+          <li>商品 11</li>
+          <li>商品 12</li>
+        </ul>
+      </div>
+      <div class="dialog-footer">
+        <button class="btn">No</button>
+        <button class="btn">Yes</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

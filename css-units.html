@@ -339,7 +339,37 @@
             <p><img src="images/css-units/pixel1.png" alt="Visual angle pixel" /></p>
           </section>
           <section>
-            iPhone7、Mi6、Dell 23.8 显示器物理尺寸、物理分辨率、CSS 分辨率对比表格
+            <h2>常见显示设备尺寸和分辨率</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>设备</th>
+                  <th>物理尺寸</th>
+                  <th>物理分辨率</th>
+                  <th>CSS 分辨率</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>iPhone 7</td>
+                  <td>高：4.10 英寸<br>宽：2.30 英寸</td>
+                  <td>1334x750</td>
+                  <td>667x375</td>
+                </tr>
+                <tr>
+                  <td>小米6</td>
+                  <td>高：4.49 英寸<br>宽：2.52 英寸</td>
+                  <td>1920x1080</td>
+                  <td>768x432</td>
+                </tr>
+                <tr>
+                  <td>戴尔 U2417H</td>
+                  <td>宽：20.74 英寸<br>高：11.67 英寸</td>
+                  <td>1920x1080</td>
+                  <td>1920x1080</td>
+                </tr>
+              </tbody>
+            </table>
           </section>
         </section>
 
@@ -353,12 +383,8 @@
               <li><code>rem</code>：根元素 <code>font-size</code> 属性计算值，如果应用于根元素的 <code>font-size</code>，则为 <code>font-size</code> 的初始值（initial value）。</li>
           </section>
           <section>
-            <h2><code>rem</code>应用示例</h2>
-            <ul>
-              <li>导航栏</li>
-              <li>图文列表</li>
-              <li>按钮</li>
-            </ul>
+            <h2><code>rem</code> 应用示例</h2>
+            <p><a href="demo/css-units/rem.html">rem 移动端应用</a></p>
           </section>
         </section>
 
@@ -373,7 +399,34 @@
             </ul>
           </section>
           <section>
-            <h2>示例</h2>
+            <h2>示例1：全屏大小元素</h2>
+            <p><a href="demo/css-units/viewport-unit-fullscreen-element.html">Demo</a></p>
+            <pre><code class="hljs" contentEditable>
+.overlay {
+  width: 100vw;
+  height: 100vh;
+}
+</code></pre>
+          </section>
+          <section>
+            <h2>示例2：固定宽高比例</h2>
+            <p><a href="demo/css-units/fixed-aspect-ratio.html">Demo</a></p>
+            <pre><code class="hljs" contentEditable>
+.box {
+  width: 100vw;
+  height: 60vw;
+}
+</code></pre>
+          </section>
+          <section>
+            <h2>示例3：不超过屏幕高度</h2>
+            <p><a href="demo/css-units/dialog.html">Demo</a></p>
+            <pre><code class="hljs" contentEditable>
+.dialog-body {
+  max-height: 50vh;
+  overflow: auto;
+}
+</code></pre>
           </section>
         </section>
 
