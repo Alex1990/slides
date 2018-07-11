@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>CSS Basic Animations</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- custom styles -->
+    <style>
+      .reveal {
+        font-size: 32px;
+      }
+
+      .reveal h1 {
+        font-size: 2.5em;
+      }
+
+      .reveal h1,
+      .reveal h2,
+      .reveal h3,
+      .reveal h4,
+      .reveal h5,
+      .reveal h6 {
+        font-family: sans-serif;
+        text-transform: none;
+      }
+
+      .reveal section img {
+        border: none;
+        box-shadow: none;
+      }
+
+      .demo .preview {
+        margin: 4rem 0;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .demo .source pre {
+        width: 100%;
+      }
+
+    </style>
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>CSS Basic Animations</h1>
+          <p>
+            <small>分享者：@曹俊超</small>
+          </p>
+        </section>
+
+        <section>
+          <h2>主要内容</h2>
+          <ul>
+            <li>CSS 过渡（Transitions）</li>
+            <li>CSS 动画（Animations）</li>
+            <li>应用示例</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>CSS Transitions</h2>
+          <ul>
+            <li><strong>Transition-* 属性</strong>
+              <ul>
+                <li>transition-property</li>
+                <li>transition-duration</li>
+                <li>transition-timing-function</li>
+                <li>transition-delay</li>
+                <li>transition</li>
+              </ul>
+            </li>
+            <li><strong>Transition 事件</strong>
+              <ul>
+                <li>transitionstart</li>
+                <li>transitionrun</li>
+                <li>transitionend</li>
+                <li>transitioncancel</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <h3>transition-property</h3>
+            <ul>
+              <li>默认值：<code>all</code></li>
+              <li>多个值：逗号分隔</li>
+              <li>重置：<code>none</code></li>
+            </ul>
+          </section>
+          <section>
+            <h2>transition-duration</h2>
+            <p>时间单位：<code>s</code>、<code>ms</code></p>
+          </section>
+          <section>
+            <h2>transition-timing-function</h2>
+            <p>和 animation-timing-function 可取值一样，由 CSS Timing 规范规定</p>
+          </section>
+          <section>
+            <h2>transition-delay</h2>
+            <p>负值也是合法的。写一个 Demo</p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Transition 事件</h2>
+            <p>兼容性检测方法、浏览器厂商前缀、兼容列表</p>
+            <p>transitionend 的应用 https://medium.com/@jh3y/using-transition-events-in-javascript-883f2e8588d9</p>
+            <p>与 Vue Transitions 和 React Transition 组件的联动分析</p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>长度相对视口单位</h2>
+            <ul>
+              <li><code>vw</code>：视口宽度的 1%</li>
+              <li><code>vh</code>：视口高度的 1%</li>
+              <li><code>vmin</code>：<code>vw</code> 和 <code>vh</code> 当中较小的。</li>
+              <li><code>vmax</code>：<code>vw</code> 和 <code>vh</code> 当中较大的。</li>
+            </ul>
+          </section>
+          <section>
+            <h2>示例1：全屏大小元素</h2>
+            <p><a href="demo/css-units/viewport-unit-fullscreen-element.html">Demo</a></p>
+            <pre><code class="hljs" contentEditable>
+.overlay {
+  width: 100vw;
+  height: 100vh;
+}
+</code></pre>
+          </section>
+          <section>
+            <h2>示例2：固定宽高比例</h2>
+            <p><a href="demo/css-units/fixed-aspect-ratio.html">Demo</a></p>
+            <pre><code class="hljs" contentEditable>
+.box {
+  width: 100vw;
+  height: 60vw;
+}
+</code></pre>
+          </section>
+          <section>
+            <h2>示例3：不超过屏幕高度</h2>
+            <p><a href="demo/css-units/dialog.html">Demo</a></p>
+            <pre><code class="hljs" contentEditable>
+.dialog-body {
+  max-height: 50vh;
+  overflow: auto;
+}
+</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>角度单位</h2>
+            <ul>
+              <li><code>deg</code>：度（degrees），一圈有 360 度。</li>
+              <li><code>grad</code>：百分度（gradians/gons/grades），一圈有 400 百分度。</li>
+              <li><code>rad</code>：弧度（radians），一圈有 <code>2π</code>弧度。</li>
+              <li><code>turn</code>：圈（turns），顾名思义。</li>
+            </ul>
+          </section>
+          <section>
+            <p>通常，在 CSS 中，如果角度表示方向时，作为<strong>方位角（bearing angle)</strong>。即，<code>0deg</code> 表示“上”或“北”，按照<strong>顺时针</strong>方向，<code>90deg</code> 表示“右”或“东。</p>
+          </section>
+          <section>
+            <h2>示例1：<code>transform</code></h2>
+            <div class="demo transform-rotate">
+              <div class="preview">
+                <div class="box box-1">
+                  &Rightarrow;
+                </div>
+                <div class="box box-2">
+                  &Rightarrow;
+                </div>
+                <div class="box box-3">
+                  &Rightarrow;
+                </div>
+                <div class="box box-4">
+                  &Rightarrow;
+                </div>
+              </div>
+              <div class="source">
+                <pre><code class="hljs" contentEditable>
+.box-1 {
+  transform: rotate(0deg);
+}
+
+.box-2 {
+  transform: rotate(90deg);
+}
+
+.box-3 {
+  transform: rotate(180deg);
+}
+
+.box-4 {
+  transform: rotate(270deg);
+}
+</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>示例2：<code>linear-gradient</code></h2>
+            <div class="demo linear-gradient">
+              <div class="preview">
+                <div class="box box-1">
+                  0deg
+                </div>
+                <div class="box box-2">
+                  45deg
+                </div>
+                <div class="box box-3">
+                  90deg
+                </div>
+                <div class="box box-4">
+                  180deg
+                </div>
+              </div>
+              <div class="source">
+                <pre><code class="hljs" contentEditable>
+.box-1 {
+  background: linear-gradient(0deg, orange, seagreen);
+}
+
+.box-2 {
+  background: linear-gradient(45deg, orange, seagreen);
+}
+
+.box-3 {
+  background: linear-gradient(90deg, orange, seagreen);
+}
+
+.box-4 {
+  background: linear-gradient(180deg, orange, seagreen);
+}</code></pre>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>时间单位</h2>
+            <ul>
+              <li><code>s</code>：秒（seconds）。</li>
+              <li><code>ms</code>：毫秒（milliseconds），等于千分之一秒。</li>
+            </ul>
+          </section>
+          <section>
+            <h2>示例1：<code>transition</code></h2>
+            <div class="demo transition">
+              <div class="preview">
+                <a class="box" href="javascript:;">Click me</a>
+              </div>
+              <div class="source">
+                <pre><code class="hljs" contentEditable>
+.box {
+  display: block;
+  width: 100px;
+  height: 100px;
+  transform: translateZ(0);
+  transition: transform .25s ease-in;
+}
+
+.box:focus {
+  transform: translate(500px, 0);
+  transition: transform 1s ease-in;
+}
+</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>示例2：<code>animation</code></h2>
+            <div class="demo animation">
+              <div class="preview">
+                <div class="box">
+                  <div class="taiji">
+                    <div class="yin"></div>
+                    <div class="yang"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="source">
+                <pre><code class="hljs" contentEditable>
+.box {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  font-size: 100px;
+  line-height: 1;
+  color: #fff;
+  animation: 2s linear infinite both paused rotate;
+}
+
+.box:hover {
+  animation-play-state: running;
+}
+</code></pre>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <h2>频率单位</h2>
+          <ul>
+            <li><code>Hz</code>：赫兹（Hertz），表示每秒发生的次数。</li>
+            <li><code>kHz</code>：千赫兹（kiloHertz），等于 1000 Hz。</li>
+          </ul>
+          <p>目前没有浏览器实现</p>
+        </section>
+
+        <section>
+          <section>
+            <h2>分辨率单位</h2>
+            <ul>
+              <li><code>dpi</code>：每英寸点数</li>
+              <li><code>dpcm</code>：每厘米点数</li>
+              <li><code>dppx</code>：每像素点数</li>
+            </ul>
+          </section>
+          <section>
+            <h2>示例：应用于 media query 中</h2>
+            <pre><code class="hljs" contentEditable>
+@media (min-resolution: 2dppx) {
+  /* 高像素密度设备，比如 retina 屏幕 */
+}
+</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <h1>The End</h1>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
