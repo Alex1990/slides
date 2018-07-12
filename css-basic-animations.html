@@ -118,7 +118,7 @@
 
         <section>
           <section>
-            <h3>transition-property</h3>
+            <h2>transition-property</h2>
             <ul>
               <li>默认值：<code>all</code></li>
               <li>多个值：逗号分隔</li>
@@ -150,226 +150,127 @@
 
         <section>
           <section>
-            <h2>长度相对视口单位</h2>
+            <h2>CSS Timing Functions</h2>
             <ul>
-              <li><code>vw</code>：视口宽度的 1%</li>
-              <li><code>vh</code>：视口高度的 1%</li>
-              <li><code>vmin</code>：<code>vw</code> 和 <code>vh</code> 当中较小的。</li>
-              <li><code>vmax</code>：<code>vw</code> 和 <code>vh</code> 当中较大的。</li>
+              <li>Linear timing function: 'linear'</li>
+              <li>Cubic Bézier timing functions</li>
+              <li>Step timing functions</li>
+              <li>Frames timing functions</li>
             </ul>
           </section>
           <section>
-            <h2>示例1：全屏大小元素</h2>
-            <p><a href="demo/css-units/viewport-unit-fullscreen-element.html">Demo</a></p>
-            <pre><code class="hljs" contentEditable>
-.overlay {
-  width: 100vw;
-  height: 100vh;
-}
-</code></pre>
+            <h2>Linear timing function</h2>
+            <p>图像，与<code>cubic-bezier(0,0,1,1)</code>效果一样，但并非 cubic-bezier() 的特殊值</p>
           </section>
           <section>
-            <h2>示例2：固定宽高比例</h2>
-            <p><a href="demo/css-units/fixed-aspect-ratio.html">Demo</a></p>
-            <pre><code class="hljs" contentEditable>
-.box {
-  width: 100vw;
-  height: 60vw;
-}
-</code></pre>
+            <h2>Cubic Bézier timing functions</h2>
+            <p>ease、ease-in、ease-out、ease-in-out 及 cubic-bezier() 图像与 Demo，cubic-bezier.com 网站，Chrome DevTools 调试截图</p>
           </section>
           <section>
-            <h2>示例3：不超过屏幕高度</h2>
-            <p><a href="demo/css-units/dialog.html">Demo</a></p>
-            <pre><code class="hljs" contentEditable>
-.dialog-body {
-  max-height: 50vh;
-  overflow: auto;
-}
-</code></pre>
+            <h2>Step timing functions</h2>
+            <p>step-start、step-end、steps() 图像与Demo</p>
           </section>
         </section>
 
         <section>
-          <section>
-            <h2>角度单位</h2>
-            <ul>
-              <li><code>deg</code>：度（degrees），一圈有 360 度。</li>
-              <li><code>grad</code>：百分度（gradians/gons/grades），一圈有 400 百分度。</li>
-              <li><code>rad</code>：弧度（radians），一圈有 <code>2π</code>弧度。</li>
-              <li><code>turn</code>：圈（turns），顾名思义。</li>
-            </ul>
-          </section>
-          <section>
-            <p>通常，在 CSS 中，如果角度表示方向时，作为<strong>方位角（bearing angle)</strong>。即，<code>0deg</code> 表示“上”或“北”，按照<strong>顺时针</strong>方向，<code>90deg</code> 表示“右”或“东。</p>
-          </section>
-          <section>
-            <h2>示例1：<code>transform</code></h2>
-            <div class="demo transform-rotate">
-              <div class="preview">
-                <div class="box box-1">
-                  &Rightarrow;
-                </div>
-                <div class="box box-2">
-                  &Rightarrow;
-                </div>
-                <div class="box box-3">
-                  &Rightarrow;
-                </div>
-                <div class="box box-4">
-                  &Rightarrow;
-                </div>
-              </div>
-              <div class="source">
-                <pre><code class="hljs" contentEditable>
-.box-1 {
-  transform: rotate(0deg);
-}
-
-.box-2 {
-  transform: rotate(90deg);
-}
-
-.box-3 {
-  transform: rotate(180deg);
-}
-
-.box-4 {
-  transform: rotate(270deg);
-}
-</code></pre>
-              </div>
-            </div>
-          </section>
-          <section>
-            <h2>示例2：<code>linear-gradient</code></h2>
-            <div class="demo linear-gradient">
-              <div class="preview">
-                <div class="box box-1">
-                  0deg
-                </div>
-                <div class="box box-2">
-                  45deg
-                </div>
-                <div class="box box-3">
-                  90deg
-                </div>
-                <div class="box box-4">
-                  180deg
-                </div>
-              </div>
-              <div class="source">
-                <pre><code class="hljs" contentEditable>
-.box-1 {
-  background: linear-gradient(0deg, orange, seagreen);
-}
-
-.box-2 {
-  background: linear-gradient(45deg, orange, seagreen);
-}
-
-.box-3 {
-  background: linear-gradient(90deg, orange, seagreen);
-}
-
-.box-4 {
-  background: linear-gradient(180deg, orange, seagreen);
-}</code></pre>
-              </div>
-            </div>
-          </section>
-        </section>
-
-        <section>
-          <section>
-            <h2>时间单位</h2>
-            <ul>
-              <li><code>s</code>：秒（seconds）。</li>
-              <li><code>ms</code>：毫秒（milliseconds），等于千分之一秒。</li>
-            </ul>
-          </section>
-          <section>
-            <h2>示例1：<code>transition</code></h2>
-            <div class="demo transition">
-              <div class="preview">
-                <a class="box" href="javascript:;">Click me</a>
-              </div>
-              <div class="source">
-                <pre><code class="hljs" contentEditable>
-.box {
-  display: block;
-  width: 100px;
-  height: 100px;
-  transform: translateZ(0);
-  transition: transform .25s ease-in;
-}
-
-.box:focus {
-  transform: translate(500px, 0);
-  transition: transform 1s ease-in;
-}
-</code></pre>
-              </div>
-            </div>
-          </section>
-          <section>
-            <h2>示例2：<code>animation</code></h2>
-            <div class="demo animation">
-              <div class="preview">
-                <div class="box">
-                  <div class="taiji">
-                    <div class="yin"></div>
-                    <div class="yang"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="source">
-                <pre><code class="hljs" contentEditable>
-.box {
-  margin: 0 auto;
-  width: 100px;
-  height: 100px;
-  font-size: 100px;
-  line-height: 1;
-  color: #fff;
-  animation: 2s linear infinite both paused rotate;
-}
-
-.box:hover {
-  animation-play-state: running;
-}
-</code></pre>
-              </div>
-            </div>
-          </section>
-        </section>
-
-        <section>
-          <h2>频率单位</h2>
+          <h2>CSS Animations</h2>
           <ul>
-            <li><code>Hz</code>：赫兹（Hertz），表示每秒发生的次数。</li>
-            <li><code>kHz</code>：千赫兹（kiloHertz），等于 1000 Hz。</li>
+            <li>Keyframes</li>
+            <li>animation-* properties</li>
+            <li>Animation Events
+            </li>
           </ul>
-          <p>目前没有浏览器实现</p>
         </section>
 
         <section>
           <section>
-            <h2>分辨率单位</h2>
+            <h2>animation-* properties</h2>
             <ul>
-              <li><code>dpi</code>：每英寸点数</li>
-              <li><code>dpcm</code>：每厘米点数</li>
-              <li><code>dppx</code>：每像素点数</li>
+              <li>animation-name</li>
+              <li>animation-duration</li>
+              <li>animation-timing-function</li>
+              <li>animation-iteration-count</li>
+              <li>animation-direction</li>
+              <li>animation-play-state</li>
+              <li>animation-delay</li>
+              <li>animation-fill-mode</li>
+              <li>animation</li>
             </ul>
           </section>
           <section>
-            <h2>示例：应用于 media query 中</h2>
-            <pre><code class="hljs" contentEditable>
-@media (min-resolution: 2dppx) {
-  /* 高像素密度设备，比如 retina 屏幕 */
-}
-</code></pre>
+            <h2>animation-name</h2>
           </section>
+          <section>
+            <h2>animation-duration</h2>
+          </section>
+          <section>
+            <h2>animation-timing-function</h2>
+          </section>
+          <section>
+            <h2>animation-iteration-count</h2>
+          </section>
+          <section>
+            <h2>animation-direction</h2>
+          </section>
+          <section>
+            <h2>animation-play-state</h2>
+          </section>
+          <section>
+            <h2>animation-delay</h2>
+          </section>
+          <section>
+            <h2>animation-fill-mode</h2>
+          </section>
+          <section>
+            <h2>animation</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Animation events</h2>
+            <ul>
+              <li>animationstart</li>
+              <li>animationiteration</li>
+              <li>animationend</li>
+              <li>animationcancel</li>
+            </ul>
+          </section>
+          <section>
+            <h2>animationstart</h2>
+          </section>
+          <section>
+            <h2>animationiteration</h2>
+          </section>
+            <section>
+            <h2>animationend</h2>
+          </section>
+          <section>
+            <h2>animationcancel</h2>
+          </section>
+        </section>
+
+        <section>
+          <h2>应用示例</h2>
+          <ul>
+            <li>Transition height from 0 to auto http://www.xiaocaoge.com/demo/transition-height-from-0-to-auto.html</li>
+            <li>两种钟表实现对比 https://codepen.io/Alex1990/pen/GBJZbB</li>
+            <li>CSS pie chart</li>
+            <li>Bounce 动画</li>
+            <li>Elastic 动画</li>
+            <li>进度条动画 https://codepen.io/Alex1990/pen/oMgLPm</li>
+            <li>帧动画 Spinner https://codepen.io/Alex1990/pen/qydNzJ</li>
+            <li>Twitter favorite 效果</li>
+            <li>弹层</li>
+            <li>环形动画</li>
+            <li>animate.css 分析</li>
+            <li>Hover.css 分析</li>
+            <li>Material 按钮点击效果</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Material 按钮点击效果</h2>
         </section>
 
         <section>
