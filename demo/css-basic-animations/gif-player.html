@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GIF Player</title>
+  <style>
+  .controls {
+    margin-bottom: 20px;
+  }
+  @keyframes playFrames {
+    50% {
+      background-position: 0 0;
+    }
+
+    to {
+      background-position: -72px 0;
+    }
+  }
+
+  .gif-player {
+    width: 72px;
+    height: 72px;
+    background: url(images/applause.png) 0 0 no-repeat;
+    animation: playFrames 0.1s step-start forwards infinite paused;
+  }
+  </style>
+</head>
+<body>
+  <div class="demo">
+    <div class="controls">
+      <p><button id="play">Play</button></p>
+      <p>
+        帧间隔时间(s)
+        <input type="range" id="speed" min="0.1" max="5" step="0.1" value="0.1">
+        <span id="speedValue">0.1</span>
+      </p>
+    </div>
+    <div class="preview">
+      <div id="gifPlayer" class="gif-player"></div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const getStyle = (el, prop) => {
+        return getComputedStyle(el)[prop];
+      };
+      const setStyle = (el, prop, value) => {
+        el.style[prop] = value;
+      };
+      const play = document.getElementById('play');
+      const speed = document.getElementById('speed');
+      const gifPlayer = document.getElementById('gifPlayer');
+      const speedValue = document.getElementById('speedValue');
+
+      play.addEventListener('click', () => {
+        const playState = getStyle(gifPlayer, 'animationPlayState');
+        switch (playState) {
+          case 'running':
+            setStyle(gifPlayer, 'animationPlayState', 'paused');
+            play.textContent = 'Play';
+            break;
+          case 'paused':
+            setStyle(gifPlayer, 'animationPlayState', 'running');
+            play.textContent = 'Pause';
+            break;
+        }
+      });
+
+      speed.addEventListener('change', (e) => {
+        const value = Number(e.target.value);
+        setStyle(gifPlayer, 'animationDuration', `${value}s`);
+      });
+      
+      speed.addEventListener('input', (e) => {
+        speedValue.textContent = e.target.value;
+      });
+
+    })();
+  </script>
+</body>
+</html>
