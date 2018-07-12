@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>linear, ease, ease-in, ease-out, ease-in-out</title>
+  <style>
+    .demo-item {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .demo-item > .label {
+      width: 100px;
+    }
+
+    .demo-item > .preview {
+      width: 100%;
+      background-image: repeating-linear-gradient(90deg, #eee, #eee 100px, #fff 100px, #fff 200px);
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background: #fa0;
+    }
+
+    .box.active {
+      transform: translateX(300px);
+      transition: transform 3s;
+    }
+
+    .demo-item.linear .box.active {
+      transition-timing-function: linear;
+    }
+
+    .demo-item.ease .box.active {
+      transition-timing-function: ease;
+    }
+
+    .demo-item.ease-in .box.active {
+      transition-timing-function: ease-in;
+    }
+
+    .demo-item.ease-out .box.active {
+      transition-timing-function: ease-out;
+    }
+
+    .demo-item.ease-in-out .box.active {
+      transition-timing-function: ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <p><button id="start">Start</button></p>
+  <div class="demo">
+    <div class="demo-item linear">
+      <div class="label">linear</div>
+      <div class="preview">
+        <div class="box"></div>
+      </div>
+    </div>
+    <div class="demo-item ease">
+      <div class="label">ease</div>
+      <div class="preview">
+        <div class="box"></div>
+      </div>
+    </div>
+    <div class="demo-item ease-in">
+      <div class="label">ease-in</div>
+      <div class="preview">
+        <div class="box"></div>
+      </div>
+    </div>
+    <div class="demo-item ease-out">
+      <div class="label">ease-out</div>
+      <div class="preview">
+        <div class="box"></div>
+      </div>
+    </div>
+    <div class="demo-item ease-in-out">
+      <div class="label">ease-in-out</div>
+      <div class="preview">
+        <div class="box"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+  (() => {
+    const start = document.getElementById('start');
+    const toggleClass = (el, cls) => {
+      const re = new RegExp(`(^|\\s+)${cls}(\\s+|$)`);
+      if (re.test(el.className)) {
+        el.className = el.className.replace(re, '');
+      } else {
+        el.className = `${el.className} ${cls}`;
+      }
+    };
+
+    start.addEventListener('click', () => {
+      const boxes = document.querySelectorAll('.box');
+      for (const box of boxes) {
+        toggleClass(box, 'active');
+      }
+      if (start.textContent === 'Start') {
+        start.textContent = 'Reset';
+      } else {
+        start.textContent = 'Start';
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
