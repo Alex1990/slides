@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Negative transition-delay</title>
+  <style>
+    .demo-item {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .demo-item > .label {
+      width: 100px;
+    }
+
+    .demo-item > .preview {
+      width: 100%;
+      background-image: repeating-linear-gradient(90deg, #eee, #eee 100px, #fff 100px, #fff 200px);
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background: #fa0;
+    }
+
+    .box.active {
+      transform: translateX(300px);
+      transition: transform 3s linear;
+    }
+
+    .demo-item.normal .box.active {
+      transition-delay: 0s;
+    }
+
+    .demo-item.negative .box.active {
+      transition-delay: -2s;
+    }
+  </style>
+</head>
+<body>
+  <p><button id="start">Start</button></p>
+  <div class="demo">
+    <div class="demo-item normal">
+      <div class="label">transition-delay: 0</div>
+      <div class="preview">
+        <div class="box"></div>
+      </div>
+    </div>
+    <div class="demo-item negative">
+      <div class="label">transition-delay: -2s</div>
+      <div class="preview">
+        <div class="box"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+  (() => {
+    const start = document.getElementById('start');
+    const toggleClass = (el, cls) => {
+      const re = new RegExp(`(^|\\s+)${cls}(\\s+|$)`);
+      if (re.test(el.className)) {
+        el.className = el.className.replace(re, '');
+      } else {
+        el.className = `${el.className} ${cls}`;
+      }
+    };
+
+    start.addEventListener('click', () => {
+      const boxes = document.querySelectorAll('.box');
+      for (const box of boxes) {
+        toggleClass(box, 'active');
+      }
+      if (start.textContent === 'Start') {
+        start.textContent = 'Reset';
+      } else {
+        start.textContent = 'Start';
+      }
+    });
+  })();
+  </script>
+</body>
+</html>

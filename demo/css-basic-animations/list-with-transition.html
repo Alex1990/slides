@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>List with transition</title>
+  <style>
+    .list-item.enter, .list-item.leave-to {
+      opacity: 0;
+    }
+
+    .list-item.enter-active,
+    .list-item.leave-active {
+      transition: opacity 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <ul id="list" class="list"></ul>
+  <p>
+    <button id="add">Add</button>
+  </p>
+  <script>
+  (() => {
+    const list = document.getElementById('list');
+    const add = document.getElementById('add');
+    let count = 0;
+
+    add.addEventListener('click', () => {
+      const item = document.createElement('li');
+      item.className = 'list-item enter enter-active';
+      item.innerHTML = `<span>Item ${count++}</span>&nbsp;<button class="remove">&cross;</button>`;
+      list.appendChild(item);
+      setTimeout(() => item.classList.remove('enter'));
+      const listener =  () => {
+        item.classList.remove('enter-active');
+        item.removeEventListener('transitionend', listener);
+      };
+      item.addEventListener('transitionend', listener);
+    });
+
+    list.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove')) {
+        console.log(1);
+        const listItem = e.target.parentNode;
+        listItem.classList.add('leave', 'leave-active');
+        setTimeout(() => {
+          listItem.classList.remove('leave');
+          listItem.classList.add('leave-to');
+        });
+        const listener = () => {
+          console.log(0);
+          listItem.classList.remove('leave-active');
+          listItem.removeEventListener('transitionend', listener);
+          list.removeChild(listItem);
+        };
+        listItem.addEventListener('transitionend', listener);
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
